@@ -1,43 +1,52 @@
-NAME	:= libftprintf.a
-HEADER	:= ft_printf.h
-CC		:= gcc
+### VAR
+NAME		:=	libftprintf.a
+HEADER		:=	ft_printf.h
+OBJ_DIR		:=	./obj
+SRC_DIR 	:=	./src
+INCLUDE		:=  -I ./include \
+
+### UTILS
+CC		:=	gcc
 CFLAGS	:=	-Wall -Wextra -Werror
-#LDFLAGS ?= 
+COMPILE	:=	$(CC) $(CFLAGS)
 RM		:=	rm -f
 
-LIBFT	=:	libft
-
 SRC 	:=	ft_printf.c \
-			functions.c
+			functions.c \
+			printf_utils.c \
+			basetoa.c \
+			hexfunctions.c \
+
+OBJ		:=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
+SRC		:=	$(addprefix $(SRC_DIR)/,$(SRC))
 
 BON_SRC :=
 
-
-OBJ		:=	$(SRC:.c=.o)
 BON_OBJ :=  $(BON_SRC:_bonus.c=_bonus.o)
 
+### EXEC
 all:  $(NAME)
 
-bonus: $(OBJ) $(BON_OBJ)
-	ar -rcs $(NAME) $^
-
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -I libft -c $< -o $@ 
+##bonus: $(OBJ) $(BON_OBJ)
+##ar -rsc $(NAME) $^
 
 $(NAME): $(OBJ)
-	make -C libft bonus
-	cp libft/libft.a .
-	mv libft.a $(NAME)
-	ar -rcs $(NAME) $^
+	ar -rsc $(NAME) $^ 
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER) | $(OBJ_DIR)
+	$(COMPILE) -c $< -o $@ $(INCLUDE)
+
+$(OBJ_DIR):
+	mkdir $@
 
 clean:
-	make -C libft clean
 	$(RM) $(OBJ) $(BON_OBJ)
 
 fclean:
-	make -C libft fclean
 	$(RM) $(NAME) $(OBJ) $(BON_OBJ)
 
 re: fclean all
+
+.DEFAULT_GOAL: all
 
 .PHONY: clean all fclean re Bonus,
