@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:39:30 by jmeruma           #+#    #+#             */
-/*   Updated: 2022/10/18 17:05:34 by jmeruma          ###   ########.fr       */
+/*   Updated: 2022/10/19 10:59:11 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	printf_hexlow(va_list arglist)
 	int				len;
 
 	len = 0;
-	nb = va_arg(arglist, unsigned long);
+	nb = va_arg(arglist, unsigned int);
 	len += basetoa("0123456789abcdef", 16, nb);
 	return (len);
 }
@@ -29,7 +29,7 @@ int	printf_hexup(va_list arglist)
 	int				len;
 
 	len = 0;
-	nb = va_arg(arglist, unsigned long);
+	nb = va_arg(arglist, unsigned int);
 	len += basetoa("0123456789ABCDEF", 16, nb);
 	return (len);
 }

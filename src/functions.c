@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:41:07 by jmeruma           #+#    #+#             */
-/*   Updated: 2022/10/18 16:02:14 by jmeruma          ###   ########.fr       */
+/*   Updated: 2022/10/19 11:00:36 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int	printf_putstr(va_list arglist)
 
 int	printf_putnbr(va_list arglist)
 {
-	long	nb;
-	int		len;
+	long			nb;
+	signed int		len;
 
 	len = 0;
-	nb = va_arg(arglist, int);
+	nb = va_arg(arglist, signed int);
 	if (nb < 0)
 	{
 		nb *= -1;
