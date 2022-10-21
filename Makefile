@@ -1,11 +1,10 @@
-### VAR
+### VAR #######################################################
 NAME		:=	libftprintf.a
 HEADER		:=	ft_printf.h
 OBJ_DIR		:=	./obj
 SRC_DIR 	:=	./src
-INCLUDE		:=  -I ./include \
 
-### UTILS
+### UTILS #####################################################
 CC		:=	gcc
 CFLAGS	:=	-Wall -Wextra -Werror
 COMPILE	:=	$(CC) $(CFLAGS)
@@ -20,21 +19,18 @@ SRC 	:=	ft_printf.c \
 OBJ		:=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 SRC		:=	$(addprefix $(SRC_DIR)/,$(SRC))
 
-BON_SRC :=
+## BON_SRC :=
 
-BON_OBJ :=  $(BON_SRC:_bonus.c=_bonus.o)
+## BON_OBJ :=  $(BON_SRC:_bonus.c=_bonus.o)
 
-### EXEC
+### EXEC #######################################################
 all:  $(NAME)
-
-##bonus: $(OBJ) $(BON_OBJ)
-##ar -rsc $(NAME) $^
 
 $(NAME): $(OBJ)
 	ar -rsc $(NAME) $^ 
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER) | $(OBJ_DIR)
-	$(COMPILE) -c $< -o $@ $(INCLUDE)
+	$(COMPILE) -c $< -o $@ 
 
 $(OBJ_DIR):
 	mkdir $@
@@ -46,7 +42,5 @@ fclean:
 	$(RM) $(NAME) $(OBJ) $(BON_OBJ)
 
 re: fclean all
-
-.DEFAULT_GOAL: all
 
 .PHONY: clean all fclean re Bonus,
