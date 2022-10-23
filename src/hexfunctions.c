@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hexfunctions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jisse <jisse@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 11:39:30 by jmeruma           #+#    #+#             */
-/*   Updated: 2022/10/19 10:59:11 by jmeruma          ###   ########.fr       */
+/*   Updated: 2022/10/23 20:22:47 by jisse            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	printf_hexpoint(va_list arglist)
 
 	len = 2;
 	nb = va_arg(arglist, unsigned long);
+	if (!nb)
+		return (putstr_util("(nil)"));
 	write(1, "0x", 2);
 	len += basetoa("0123456789abcdef", 16, nb);
 	return (len);
