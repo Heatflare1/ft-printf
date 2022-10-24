@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 09:42:13 by jmeruma           #+#    #+#             */
-/*   Updated: 2022/10/18 17:06:33 by jmeruma          ###   ########.fr       */
+/*   Updated: 2022/10/21 11:34:45 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	basetoa(const char *baseset, int base, unsigned long nb)
 	int		set;
 	int		i;
 	int		counter;
-
+	
 	i = 0;
 	counter = 0;
 	if (checks(nb) == 1)
