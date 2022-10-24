@@ -6,7 +6,7 @@
 /*   By: jmeruma <jmeruma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:41:25 by jmeruma           #+#    #+#             */
-/*   Updated: 2022/10/21 14:46:17 by jmeruma          ###   ########.fr       */
+/*   Updated: 2022/10/24 11:23:27 by jmeruma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	ft_printf(char const *format, ...)
 	len = 0;
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1])
 		{		
 			i++;
 			if (g_function_list[(int)format[i]] != NULL)
 				len += (*g_function_list[(int)format[i]])(arglist);
 		}
-		else
+		else if (format[i] != '%')
 			len += putchar_util(format[i]);
 		i++;
 	}
